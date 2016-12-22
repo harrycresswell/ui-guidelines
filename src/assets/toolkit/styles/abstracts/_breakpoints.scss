@@ -1,0 +1,68 @@
+/**
+ * Breakpoints
+ *
+ Opinionated em based defaults by Harry Cresswell
+ *
+$base-font-size = 100%/16px
+  *
+*/
+
+$bp-xs : 30em; // 480px = 30em
+$bp-sm : 37.5em; // 600px = 37.5em
+$bp-md : 48em; // 768px = 48em
+$bp-ml : 62em; // 992px = 62em
+$bp-lg : 75em; // 1200px = 75em
+$bp-xl : 86.38em; // 1382px = 86.38em
+$bp-bg : 120em; // 1920px = 120em
+$bp-xbg: 160em; // 2560px = 160em
+
+
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: $bp-xs) { @content; }
+  }
+
+  @else if $class == sm {
+    @media (min-width: $bp-sm) { @content; }
+  }
+
+  @else if $class == md {
+    @media (min-width: $bp-md) { @content; }
+  }
+
+  @else if $class == ml {
+    @media (min-width: $bp-ml) { @content; }
+  }
+
+  @else if $class == lg {
+    @media (min-width: $bp-lg) { @content; }
+  }
+
+  @else if $class == xl {
+    @media (min-width: $bp-xl) { @content; }
+  }
+
+  @else if $class == bg {
+    @media (min-width: $bp-bg) { @content; }
+  }
+
+  @else if $class == xbg {
+    @media (min-width: $bp-xbg) { @content; }
+  }
+
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, ml, lg, xl, bg, xbg";
+  }
+}
+
+/**
+* Mobile-first styles FTW
+*
+Example:
+*/
+aside.primary {
+  /* Regular content */
+  @include breakpoint(sm) {
+    /* responsive content */
+  }
+}
